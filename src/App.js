@@ -1,26 +1,21 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React           from 'react'
+import { createStore } from 'redux'
+import { Provider }    from 'react-redux'
+import rootReducer     from './rootReducer'
+import HeroesApp       from './HeroesApp'
+
+// Create store acepta un reducer que es la funcióm que procesa el estado.
+// O también puede recibir un conjunto de reducers que se componen.
+const store = createStore(rootReducer)
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    // El provider es un Highg Order Components que le pasa el store a sus hijos
+    <Provider store={store}>
+      {/* Aca va la app completa tuya */}
+      <HeroesApp />
+    </Provider>
+  )
 }
 
-export default App;
+export default App
