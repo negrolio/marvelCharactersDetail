@@ -6,6 +6,7 @@ const Container = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  padding-top: 90px
 `;
 const Card = styled.div`
   background-color: #282828;
@@ -129,7 +130,7 @@ class HeroList extends Component {
        )
     })
   return (
-    <BottomScrollListener onBottom={()=>{this.props.fetch()}} debounce='1000'>
+    <BottomScrollListener onBottom={()=>{this.props.fetch()}} >
       <Container>
         { cardsList }
       </Container>

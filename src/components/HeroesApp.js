@@ -43,11 +43,29 @@ const LoadSpinner = styled.div`
   }
 `;
 
+const EmptyResultContainer = styled.div`
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    align-items: center;
+  }
+`;
+
+const EmptyResultText = styled.h1`
+  background-color: #f0111e;
+  color: white;
+  text-transform: uppercase;
+  padding: 2px;
+  border-radius: 7px;
+}
+`;
+
 const mapStateToProps = state => ({
-  heroesById     : state.heroesById,
-  heroesIds      : state.heroesIds,
-  fetchingHeroes : state.fetchingHeroes,
-  limit          : state.limit
+  heroesById          : state.heroesById,
+  heroesIds           : state.heroesIds,
+  fetchingHeroes      : state.fetchingHeroes,
+  fetchingSearchHeroes: state.fetchingSearchHeroes,
+  limit               : state.limit
 })
 
 class HeroesApp extends React.Component {
@@ -67,6 +85,7 @@ class HeroesApp extends React.Component {
 
   fetchHeroesByChar = (char) => {
     if (!char) {
+      // TODO: fetch from scroll by char, and remove this two calls
       fetchHeroesByChar(this.props.dispatch, 'a', this.props.limit, 0);
       this.fetchHeroes(0, 0);
       return;
@@ -84,12 +103,13 @@ class HeroesApp extends React.Component {
   }
 
   render() {
-    const { heroesById, heroesIds } = this.props;
+    const { heroesById, heroesIds, fetchingHeroes, fetchingSearchHeroes } = this.props;
     const height = heroesIds.length ? '100%' : '100vh';
     return (
       <div style={{backgroundImage: `url(${Background})`, height}}>
         <Header searchHandler={this.onEntryValue} />
-        { this.props.fetchingHeroes && <LoadSpinner /> }
+        { (fetchingHeroes || fetchingSearchHeroes) && <LoadSpinner /> }
+        { !heroesIds.length && !fetchingHeroes && <EmptyResultContainer><EmptyResultText>There are no Heroes with that name</EmptyResultText></EmptyResultContainer> }
         <HeroList heroesById={heroesById} heroesIds={heroesIds} fetch={this.fetchHeroesFromScroll}/>
       </div>
     )

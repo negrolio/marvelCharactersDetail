@@ -4,6 +4,10 @@ import styled from 'styled-components';
 const Container = styled.div`
   height: 90px;
   background-color: black;
+  position: fixed;
+  width: 100%;
+  z-index: 1;
+  opacity: .97;
 `;
 
 const Img = styled.img`
@@ -104,7 +108,7 @@ class Header extends Component {
         <Label htmlFor="inp">
         <SearchIcon src={require('../img/search-icon.png')} />
           <Input type="text" id="inp" placeholder="&nbsp;" onChange={this.handlerChange}/>
-          <LabelSpan>Search Hero</LabelSpan>
+          <LabelSpan>Search Character</LabelSpan>
           <Border></Border>
         </Label>
       </Container>

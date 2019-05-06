@@ -22,6 +22,7 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         fetchingHeroes: false,
+        fetchingSearchHeroes: false,
         heroesIds: [...state.heroesIds, ...action.payload.map((hero) => hero.id)],
         heroesById:{...state.heroesById, ...groupById},
         limit: 20
@@ -38,6 +39,7 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         fetchingHeroes: false,
+        fetchingSearchHeroes: false,
         heroesIds: action.payload.map((hero) => hero.id),
         heroesById: groupSearchById,
         limit: 20
