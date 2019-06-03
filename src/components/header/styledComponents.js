@@ -3,6 +3,10 @@ import styled from 'styled-components';
 export const Container = styled.div`
   height: 90px;
   background-color: black;
+  position: fixed;
+  width: 100%;
+  z-index: 1;
+  opacity: .97;
 `;
 
 export const Img = styled.img`

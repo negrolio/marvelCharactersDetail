@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import BottomScrollListener from 'react-bottom-scroll-listener';
 import * as styledComponents from './style';
 
@@ -51,7 +51,7 @@ const HeroList = (props) => {
     })
 
   return (
-    <BottomScrollListener onBottom={()=>{props.fetch()}} debounce='1000'>
+    <BottomScrollListener onBottom={()=>{props.fetch()}}>
       <Container>
         { cardsList }
       </Container>

@@ -1,10 +1,11 @@
-import React           from 'react'
-import { connect }     from 'react-redux'
-import { fetchHeroes } from '../actions/heroesActions'
-import HeroList        from './heroList/HeroList';
-import Background      from '../img/background.jpg';
-import Header          from './header/Header';
-import LoadSpinner     from './Spinner';
+import React                 from 'react'
+import { connect }           from 'react-redux'
+import { fetchHeroes }       from '../actions/heroesActions'
+import HeroList              from './heroList/HeroList';
+import Background            from '../img/background.jpg';
+import Header                from './header/Header';
+import LoadSpinner           from './Spinner';
+import * as styledComponents from './HeroesAppStyledComponents';
 
 const mapStateToProps = state => ({
   heroesById     : state.heroesById,
@@ -47,7 +48,8 @@ class HeroesApp extends React.Component {
   }
 
   render() {
-    const { heroesById, heroesIds } = this.props;
+    const { EmptyResultContainer, EmptyResultText } = styledComponents;
+    const { heroesById, heroesIds, fetchingHeroes } = this.props;
     const height = heroesIds.length ? '100%' : '100vh';
     return (
       <div style={{backgroundImage: `url(${Background})`, height}}>
@@ -55,6 +57,7 @@ class HeroesApp extends React.Component {
         <div style={{ position: 'fixed', top: '14px', left: '85%', zIndex: 1 }}>
           { this.props.fetchingHeroes && <LoadSpinner /> }
         </div>
+        { !heroesIds.length && !fetchingHeroes && <EmptyResultContainer><EmptyResultText>There are no Heroes with that name</EmptyResultText></EmptyResultContainer> }
         <HeroList heroesById={heroesById} heroesIds={heroesIds} fetch={this.fetchHeroesFromScroll}/>
       </div>
     )

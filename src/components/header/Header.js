@@ -15,7 +15,7 @@ const Header = (props) => {
       <Label htmlFor="inp">
       <SearchIcon src={require('../../img/search-icon.png')} />
         <Input type="text" id="inp" placeholder="&nbsp;" onChange={handlerChange}/>
-        <LabelSpan>Search Hero</LabelSpan>
+        <LabelSpan>Search Character</LabelSpan>
         <Border></Border>
       </Label>
     </Container>

@@ -4,6 +4,7 @@ export const Container = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  padding-top: 90px;
 `;
 export const Card = styled.div`
   background-color: #282828;
