@@ -1,17 +1,16 @@
-import React, { Component } from 'react';
 import styled from 'styled-components';
 
-const Container = styled.div`
+export const Container = styled.div`
   height: 90px;
   background-color: black;
 `;
 
-const Img = styled.img`
+export const Img = styled.img`
   width: 130px;
   margin: 20px
 `;
 
-const Label = styled.label`
+export const Label = styled.label`
   position: absolute;
   top: 16px;
   left: 40%;
@@ -22,7 +21,7 @@ const Label = styled.label`
   transition: all 0.2s ease;
 `;
 
-const Input = styled.input`
+export const Input = styled.input`
   -webkit-appearance: none;
   width: 100%;
   border: 0;
@@ -60,7 +59,7 @@ const Input = styled.input`
   }
 `;
 
-const Border = styled.span`
+export const Border = styled.span`
   position: absolute;
   bottom: 0;
   left: 0;
@@ -72,7 +71,7 @@ const Border = styled.span`
   transition: all 0.15s ease;
 `;
 
-const LabelSpan = styled.span`
+export const LabelSpan = styled.span`
   position: absolute
   top: 16px
   left: 0
@@ -83,7 +82,7 @@ const LabelSpan = styled.span`
   transition: all .2s ease
 `;
 
-const SearchIcon = styled.img`
+export const SearchIcon = styled.img`
   width: 30px;
   filter: invert(1);
   left: 165px;
@@ -91,25 +90,3 @@ const SearchIcon = styled.img`
   position: absolute;
   transform: scaleX(-1);
 `;
-class Header extends Component {
-
-  handlerChange = value => {
-    this.props.searchHandler(value.target.value)
-  }
-
-  render() {
-    return (
-      <Container>
-        <Img src={require('../img/marvel-logo.svg')}/>
-        <Label htmlFor="inp">
-        <SearchIcon src={require('../img/search-icon.png')} />
-          <Input type="text" id="inp" placeholder="&nbsp;" onChange={this.handlerChange}/>
-          <LabelSpan>Search Hero</LabelSpan>
-          <Border></Border>
-        </Label>
-      </Container>
-    );
-  }
-}
-
-export default Header;
